@@ -1,0 +1,26 @@
+// apply plugin: 'java'
+apply plugin: 'application'
+
+sourceCompatibility = 1.8
+
+project.ext {
+    dropwizardVersion = '0.8.2'
+    configPath = "$rootProject.projectDir/config/"
+}
+repositories {
+    mavenCentral()
+}
+dependencies {
+    compile group: 'io.dropwizard', name: 'dropwizard-core', version: dropwizardVersion
+}
+mainClassName = 'com.example.whatever.WhateverApplication'
+
+run {
+    args 'server', configPath + 'app_config.yml'
+}
+
+// jar {
+//     manifest {
+//         attributes 'Main-Class': 'com.example.whatever.WhateverApplication'
+//     }
+// }
